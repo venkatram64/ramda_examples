@@ -1,0 +1,22 @@
+{
+  "name": "ramda_examples",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/venkatram64/ramda_examples.git"
+  },
+  "author": "Venkatram Veerareddy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/venkatram64/ramda_examples/issues"
+  },
+  "homepage": "https://github.com/venkatram64/ramda_examples#readme",
+  "dependencies": {
+    "ramda": "^0.25.0"
+  }
+}
