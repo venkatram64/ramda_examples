@@ -45,7 +45,118 @@ describe('App', function(){
 
         it("reject any with excluded tags", () => {
             filterExcludedTags(testData).length.should.eql(2);
-        })
+        });
+
+        //
+
+        let makeEmailHref = R.pipe(
+            R.map(R.prop('email')),
+            R.join(';'),
+            R.concat('mailto:')
+        );
+
+        it("send an email to everybody", () =>{
+            let expectedResult = `mailto:marcie.rollins@isosure.me;janie.donaldson@interloo.biz;rosanna.gonzales@turnabout.co.uk;patterson.compton@franscene.ca;deirdre.parrish@mantrix.biz`
+
+            makeEmailHref(testData).should.eql(expectedResult);
+        });
+
+        //square code challenge
+        let inputs = [
+            'If man was meant to stay on the ground, God would have given us roots',
+            'Have a nice day!',
+            'Feed the dog.',
+            'CHILL OUT!!!'
+        ];
+        let outputs = [
+            'imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn sseoau',
+            'hae and via ecy',
+            'fto ehg ee dd',
+            'cl ho iu lt'
+        ];
+
+        let cleanInput = R.pipe(
+            //R.tap(console.log),
+            R.toLower,
+            //R.tap(console.log),
+            R.replace(/[\s.,!]/g,'')
+            //R.tap(console.log)
+        );
+        it("clean input", () =>{
+            cleanInput('HELLO!!  .....,,,').should.eql('hello');
+        });
+
+        //
+        let determinNumberOfColumns = (input) => {
+            let length = input.length;
+            let columnsFor = R.pipe(
+                //R.tap(console.log),
+                Math.sqrt,
+               // R.tap(console.log),
+                Math.floor,
+                //R.tap(console.log),
+                R.divide(length),
+                //R.tap(console.log),
+                Math.ceil
+            );
+            return columnsFor(length);
+        };
+
+        it("determine number of columns", () => {
+            let checkColumns = R.map(
+                R.pipe(cleanInput, determinNumberOfColumns)
+            );
+            checkColumns(inputs).should.eql([8,4,4,4]);
+        });
+
+        //
+        let turnIntoSquare = (columns) => R.splitEvery(columns);
+
+        it("turn input into square", () => {
+            let input = "haveaniceday";
+            turnIntoSquare(4)(input).should.eql(
+                [
+                    'have',
+                    'anic',
+                    'eday'
+                ]
+            )
+        });
+
+        //
+        let fillSquare = (columns) => R.map(
+            R.ifElse(
+                R.pipe(R.length, R.equals(columns)),
+                R.identity,
+                (row) => {
+                    let fillSpaces = R.pipe(
+                        R.length,
+                        R.subtract(columns),
+                        R.times(R.always(' ')),
+                        //R.concat(row),//not working
+                        R.join(' ')
+                    );
+                    return fillSpaces(row);
+                }
+            )
+        );
+
+        it.only("fill in spaces for any uneven rows", () => {
+            let squareWithUnevenRows = [
+                'feed',
+                'thed',
+                'og'
+            ];
+
+            fillSquare(4)(squareWithUnevenRows).should.eql(
+                [
+                    'feed',
+                    'thed',
+                    'og  '
+                ]
+            );
+        });
+
     });
 
     describe('Ramda Demo', () =>{
