@@ -134,7 +134,7 @@ describe('App', function(){
                         R.subtract(columns),
                         R.times(R.always(' ')),
                         //R.concat(row),//not working
-                        R.join(' ')
+                        R.join('')
                     );
                     return fillSpaces(row);
                 }
