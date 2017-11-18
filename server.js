@@ -16,6 +16,8 @@ console.log("result ", result);
 
 //currying
 const add = x => y => x + y;
+let s = add(5);
+console.log("Currying add " + s(7));
 //or
 /*function add(x) {
     return function(y){
