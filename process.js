@@ -1,5 +1,6 @@
 const R = require('ramda');
-
+//https://www.youtube.com/watch?v=6cOsxaNC06c    
+//above link is for how to debug nodejs in vc code
 const dog = {
     name: 'fido',
     age: 3,
