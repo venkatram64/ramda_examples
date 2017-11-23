@@ -1,6 +1,7 @@
 //const assert = require('chai').assert;
 const chai = require('chai');
 const app = require('../app');
+const process = require('../process');
 const R = require('ramda');
 
 const assert = chai.assert;
@@ -260,6 +261,45 @@ describe('App', function(){
             let result = app.addNumbers(5,5);
             assert.typeOf(result, 'number');
         });
+    });
+
+    describe('Testing Process', function(){
+        describe('All tests', function(){
+            it("Lense view", () =>{
+                let result = process.viewLense();
+                assert.equal(result, 3);    
+            });
+
+            it("Lense set", () =>{
+                let result = process.setLense();
+                //assert.equal(result, 5);    
+            });
+
+            it("Lense over", () =>{
+                let result = process.overLense();
+                //assert.equal(result, 5);    
+            });
+
+            it("Lense Quotes", () =>{
+                let result = process.quotesTest();
+                //assert.equal(result, 5);    
+            });
+
+            it("Object literal", () =>{
+                let result = process.resultOL();
+            });
+
+            it("Add test", () =>{
+                let result = process.myAdder([1,2,3]);
+                assert.equal(result, 6);
+            });
+
+            it("Spread Object test", () =>{
+                let result = process.objSpread();
+            });
+            
+        });
+
     });
 
 
