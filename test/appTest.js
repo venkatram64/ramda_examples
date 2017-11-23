@@ -5,6 +5,7 @@ const R = require('ramda');
 
 const assert = chai.assert;
 const should = chai.should();
+const expect = chai.expect;
 
 var testData = require('./data.json');
 
@@ -141,7 +142,7 @@ describe('App', function(){
             )
         );
 
-        it.only("fill in spaces for any uneven rows", () => {
+        /*it.only("fill in spaces for any uneven rows", () => {
             let squareWithUnevenRows = [
                 'feed',
                 'thed',
@@ -155,7 +156,7 @@ describe('App', function(){
                     'og  '
                 ]
             );
-        });
+        });*/
 
     });
 
@@ -182,6 +183,55 @@ describe('App', function(){
         });
 
     });
+
+    describe('youtubeVideos', function(){
+        describe('Ramda youtubeVideos', () =>{
+            const array = [
+                {},
+                { views: 99 },
+                {},
+                { views: 22 }
+            ];
+
+            it('test 1', function(){
+                /*expect(app.getViews(array)).to.equal(
+                    [ 99,
+                     22 ]);*/
+                app.getViews(array).should.have.lengthOf(2);
+            });
+
+            it('test 2', function(){
+                /*expect(app.getViews(array)).to.equal(
+                    [ 99,
+                     22 ]);*/
+                app.getViews2(array).should.have.lengthOf(2);
+            });
+
+            it('test 3', function(){
+                /*expect(app.getViews(array)).to.equal(
+                    [ 99,
+                     22 ]);*/
+                app.getViews3(array).should.have.lengthOf(2);
+            });
+
+            it('test 4', function(){
+                /*expect(app.getViews(array)).to.equal(
+                    [ 99,
+                     22 ]);*/
+                app.getViews4(array).should.have.lengthOf(2);
+            });
+
+            it('test 5', function(){
+                const getViews5 = R.pipe(
+                    R.filter(R.has('views')),
+                    R.map(R.prop('views'))    
+                );
+                getViews5(array).should.have.lengthOf(2);
+            });
+
+
+        });
+    }); 
 
     describe('sayHello()', function(){
         it('sayHello should return hello', function(){
@@ -211,4 +261,6 @@ describe('App', function(){
             assert.typeOf(result, 'number');
         });
     });
+
+
 });
