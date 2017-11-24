@@ -88,7 +88,7 @@ async load(id){
 }
 
 */
-
+//https://gist.github.com/mpj/3f8bc0c6ecda4294fbeff99f1e3fae85
 const fetchAvatarUrl = async(userId) => {
     const response = await fetch(`https://catappapi.herokuapp.com/users/${userId}`);
     const data = await response.json();
