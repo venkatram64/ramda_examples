@@ -89,7 +89,7 @@ async load(id){
 
 */
 //https://gist.github.com/mpj/3f8bc0c6ecda4294fbeff99f1e3fae85
-const fetchAvatarUrl = async(userId) => {
+/*const fetchAvatarUrl = async(userId) => {
     const response = await fetch(`https://catappapi.herokuapp.com/users/${userId}`);
     const data = await response.json();
     return data;
@@ -108,7 +108,7 @@ const fetchAvatarUrl2 = (userId) => {
 
 const data4 = fetchAvatarUrl2(123);
 console.log(data4);
-
+*/
 
 
 
@@ -120,7 +120,7 @@ module.exports = {
     resultOL:resultOL,
     myAdder: myAdder,
     objSpread:objSpread,
-    fetchAvatarUrl:fetchAvatarUrl
+    //fetchAvatarUrl:fetchAvatarUrl
 }
 
 

@@ -298,10 +298,10 @@ describe('App', function(){
                 let result = process.objSpread();
             });
 
-            it("Fetch test", () =>{
+            /*it("Fetch test", () =>{
                 let result = process.fetchAvatarUrl(123);
                 console.log(result);
-            });
+            });*/
             
         });
 
