@@ -297,6 +297,11 @@ describe('App', function(){
             it("Spread Object test", () =>{
                 let result = process.objSpread();
             });
+
+            it("Fetch test", () =>{
+                let result = process.fetchAvatarUrl(123);
+                console.log(result);
+            });
             
         });
 
