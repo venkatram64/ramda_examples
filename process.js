@@ -110,7 +110,50 @@ const data4 = fetchAvatarUrl2(123);
 console.log(data4);
 */
 
+const loadImage = (url, callback) => {
+    let image = new Image();
+    image.onload = () =>{
+        callback(null, image);
+    }
+    image.onerror = () => {
+        let message = 'Could not load image at ' + url;
+        callback(new Error(message));
+    }
+    image.src = url;
+};
 
+const loadImageWithPromise = (url) => {
+
+    return new Promise((resolve, reject) =>{
+
+        let image = new Image();
+        image.onload = () =>{
+            resolve(image);
+        };
+
+        image.onerror = () => {
+            let message = 'Could not load image at ' + url;
+            reject(new Error(message));
+        };
+
+        image.src = url;
+    });
+
+    //simple object
+    let dog = {
+        sound: 'woof',
+        talk: function(){
+            console.log(this.sound);
+        }
+    };
+
+    dog.talk();
+    //second way
+    let talkFunction = dog.talk;
+    let boundFunction = talkFunction.bind(dog);// binding to the dog object
+    boundFunction() // "woof"
+
+}
 
 module.exports = {
     viewLense: viewLense,
@@ -120,6 +163,8 @@ module.exports = {
     resultOL:resultOL,
     myAdder: myAdder,
     objSpread:objSpread,
+    loadImage: loadImage,
+    loadImageWithPromise:loadImageWithPromise
     //fetchAvatarUrl:fetchAvatarUrl
 }
 

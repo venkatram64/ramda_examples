@@ -229,8 +229,6 @@ describe('App', function(){
                 );
                 getViews5(array).should.have.lengthOf(2);
             });
-
-
         });
     }); 
 
@@ -306,6 +304,64 @@ describe('App', function(){
         });
 
     });
+
+    /*describe('Image load', function(){
+        describe('test1', () =>{
+            let addImage = (src) => {
+                let imgElement = document.createElement("img");
+                imgElement.src = src;
+                document.body.appendChild(imgElement);
+            };
+            process.loadImage('images/cat1.jpg', (err, img1) =>{
+                if(err) throw err;
+                addImage(img1.src);
+                process.loadImage('images/cat2.jpg', (err, img2) =>{
+                    if(err) throw err;
+                    addImage(img2.src);
+                    process.loadImage('images/cat3.jpg', (err, img3) =>{
+                        if(err) throw err;
+                        addImage(img3.src);
+                    });
+                });
+                console.log("loaded images.");
+            });
+        });
+
+        describe('test2', () =>{
+            let addImage = (src) => {
+                let imgElement = document.createElement("img");
+                imgElement.src = src;
+                document.body.appendChild(imgElement);
+            };
+            process.loadImageWithPromise('images/cat1.jpg').then((img1) =>{
+                addImage(img1.src);
+                process.loadImageWithPromise('images/cat2.jpg').then((img2) =>{
+                    addImage(img2.src);
+                    process.loadImageWithPromise('images/cat3.jpg').then((img3) =>{
+                        addImage(img3.src);
+                    });
+                });
+                console.log("loaded images.");
+            });
+        });
+
+        describe('test3 promise composing', () =>{
+            let addImage = (src) => {
+                let imgElement = document.createElement("img");
+                imgElement.src = src;
+                document.body.appendChild(imgElement);
+            };
+            Promise.all([
+                process.loadImageWithPromise('images/cat1.jpg'),
+                process.loadImageWithPromise('images/cat2.jpg'),
+                process.loadImageWithPromise('images/cat3.jpg')
+            ]).then((images) =>{
+                images.forEach(img => addImage(img.src));
+            }).catch((err) => {
+                //handling errors
+            });
+        });
+    });*/
 
 
 });
